@@ -42,9 +42,55 @@ $ rails generate controller pages home
 get 'pages/home'	# delete
 root "pages#home"	# add
 
+#DAY 7############################################
+# Creating about page
 
+# Add 3 things:
+# 1- Controller
+# 2- View
+# 3- Add a route
 
+# Open file from *>>app>>controllers>>pages_controller.rb
+class PagesController < ApplicationController
+  def home
+  end
+  def about  # add this, we want an about page
+  end        # def ends here
+end
 
+# Create file in *>>app>>views>>pages>>about.html.erb
+<hi>About us</h1>
+<p>We are the champions, my friend</p>
+
+# Add a route  *>>config>>routes.rb
+Rails.application.routes.draw do
+  root "pages#home"
+  get "about" => "pages#about"    # add this line
+end
+
+#DAY 7-8############################################
+# Navigation Links
+
+# Creating navigation links
+# Add link to about page from home page
+# "about_path" (below) links to about page because we had added it to "routes.rb"
+# Open home page in *>>app>>views>>pages>>home.html.erb
+<%= link_to "About", about_path %>  # add this
+<h1>Welcome bro!</h1>
+<p>Sign up here dogg  <%= link_to "here", "#" %></p>
+
+# Add navigation links to layout (website theme)
+# Delete theme links from "home.html.erb" and "about.html.erb"
+# Open layout  *>>app>>views>>layouts>>application.html.erb
+# add links right after the body tag
+....
+</head>
+<body>
+	<%= link_to "Home", root_path %>          # add this
+	<%= link_to "About Us", about_path %>     # add this
+	<%= yield %>
+</body>
+</html>
 
 
 
