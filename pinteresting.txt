@@ -18,6 +18,28 @@ To ignore a file, add its name to /.gitignore file
 /tmp
 .DS_Store  # added
 
+Getting back deleted file
+>Terminal
+$ git add .
+$ git status     # shows the changes
+$ git checkout -f
+
+create new repository on GitHub
+http://github.com/repositories/new
+
+GitHub Dance
+$ git add .
+$ git commit -am "Changed the Readme.md"
+$ git push
+
+
+
+
+
+
+
+
+
 
 
 
