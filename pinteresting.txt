@@ -32,6 +32,15 @@ $ git add .
 $ git commit -am "Changed the Readme.md"
 $ git push
 
+#############################################
+
+# Create homepage: "localhost:3000/pages/home"
+$ rails generate controller pages home
+
+# Make homepage default
+>routes.rb
+get 'pages/home'	# delete
+root "pages#home"	# add
 
 
 
