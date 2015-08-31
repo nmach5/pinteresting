@@ -1,0 +1,23 @@
+new rails app
+>Terminal
+$ rails new pinteresting
+$ cd pinteresting
+
+start server while pwd is the folder
+>Terminal
+$ rails server
+
+start git in our working folder
+>Terminal
+$ git init
+$ git status # which items are being tracked
+
+To ignore a file, add its name to /.gitignore file 
+# Ignore all logfiles and tempfiles.
+/log/*.log
+/tmp
+.DS_Store  # added
+
+
+
+
