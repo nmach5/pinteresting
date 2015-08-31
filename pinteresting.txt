@@ -38,7 +38,7 @@ $ git push
 $ rails generate controller pages home
 
 # Make homepage default
->routes.rb
+# Open *>>config>>routes.rb
 get 'pages/home'	# delete
 root "pages#home"	# add
 
@@ -83,7 +83,7 @@ end
 # Delete theme links from "home.html.erb" and "about.html.erb"
 # Open layout  *>>app>>views>>layouts>>application.html.erb
 # add links right after the body tag
-....
+...
 </head>
 <body>
 	<%= link_to "Home", root_path %>          # add this
@@ -91,6 +91,26 @@ end
 	<%= yield %>
 </body>
 </html>
+
+#DAY 9############################################
+# Add Bootstrap
+
+# Open gemfile  *>>Gemfile
+...
+gem 'bootstrap-sass'    # add this line, bootstrap gem
+...
+
+# Open the terminal, cd to our folder
+>Terminal
+$ bundle install
+
+# Create a new file and import bootstrap:
+# *>>app>>assets>>stylesheets>>bootstrap_and_customization.css.scss
+@import 'bootstrap';    # add this line for import
+
+# Shutdown and restart server for changes to take effect
+
+
 
 
 
