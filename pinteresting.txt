@@ -52,10 +52,10 @@ root "pages#home"	# add
 
 # Open file from *>>app>>controllers>>pages_controller.rb
 class PagesController < ApplicationController
-  def home
-  end
-  def about  # add this, we want an about page
-  end        # def ends here
+	def home
+	end
+	def about  # add this, we want an about page
+	end        # def ends here
 end
 
 # Create file in *>>app>>views>>pages>>about.html.erb
@@ -64,8 +64,8 @@ end
 
 # Add a route  *>>config>>routes.rb
 Rails.application.routes.draw do
-  root "pages#home"
-  get "about" => "pages#about"    # add this line
+	root "pages#home"
+	get "about" => "pages#about"    # add this line
 end
 
 #DAY 7-8############################################
@@ -90,7 +90,7 @@ end
 	<%= link_to "About Us", about_path %>     # add this
 	<%= yield %>
 </body>
-</html>
+...
 
 #DAY 9############################################
 # Add Bootstrap
@@ -109,6 +109,74 @@ $ bundle install
 @import 'bootstrap';    # add this line for import
 
 # Shutdown and restart server for changes to take effect
+
+#DAY 10############################################
+# Add Bootstrap Elements to Pages
+
+# Add container from bootstrap, centers the contents
+# *>>http://getbootstrap.com/css/#overview-container
+# Copy it to:
+# *>>app>>views>>layouts>>application.html.erb
+...
+<body>
+	<%= link_to "Home", root_path %>
+	<%= link_to "About Us", about_path %>
+	<div class="container">   # add container here
+		<%= yield %>          # put yield in it
+	</div>                    # end it here
+</body>
+...
+
+# Add navigation tab from bootstrap, copy contents from:
+# *>>http://getbootstrap.com/components/#navbar
+# Create header partial file, which cannot be used on its own
+# Partial files start with underscore "_"
+# *>>app>>views>>layouts>>_header.html.erb
+# Paste the content from bootstrap here
+# Open *>>app>>views>>layouts>>application.html.erb
+# Link it to tab file (_header.html.erb):
+...
+<body>
+	<%= link_to "Home", root_path %>       # DELETE
+	<%= link_to "About Us", about_path %>  # DELETE
+	<%= render 'layouts/header' %>         # Add link to "_header" here
+	<div class="container">
+		<%= yield %>
+	</div>
+</body>
+...
+# Change "_header.html.erb" as needed
+
+# Add bootstrap javascript
+# Open *>>app>>assets>>javascript>>application.js
+...
+//= require jquery_ujs
+//= require bootstrap    # add this exactly here, sequence matters!
+//= require turbolinks
+...
+
+# Make it mobile friendly
+# Open *>>app>>views>>layouts>>application.html.erb
+...
+  	<%= csrf_meta_tags %>
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0"> #add
+</head>
+...
+
+# Open home page *>>app>>views>>pages>>home.html.erb
+# add "jumbotron" from: http://getbootstrap.com/components/#jumbotron
+# add buttons from: http://getbootstrap.com/css/#buttons
+<div class="jumbotron">
+<h1>Welcome bro!</h1>
+<p>Click to <%= link_to "Sign Up", "#", class: "btn btn-primary btn-lg" %> dogg</p>
+</div>
+
+
+
+
+
+
+
 
 
 
