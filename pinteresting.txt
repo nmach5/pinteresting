@@ -42,7 +42,7 @@ $ rails generate controller pages home
 get 'pages/home'	# delete
 root "pages#home"	# add
 
-#DAY 7############################################
+# DAY 7 ############################################
 # Creating about page
 
 # Add 3 things:
@@ -68,7 +68,7 @@ Rails.application.routes.draw do
 	get "about" => "pages#about"    # add this line
 end
 
-#DAY 7-8############################################
+# DAY 7-8 ############################################
 # Navigation Links
 
 # Creating navigation links
@@ -92,7 +92,7 @@ end
 </body>
 ...
 
-#DAY 9############################################
+# DAY 9 ############################################
 # Add Bootstrap
 
 # Open gemfile  *>>Gemfile
@@ -110,7 +110,7 @@ $ bundle install
 
 # Shutdown and restart server for changes to take effect
 
-#DAY 10############################################
+# DAY 10 ############################################
 # Add Bootstrap Elements to Pages
 
 # Add container from bootstrap, centers the contents
@@ -170,6 +170,30 @@ $ bundle install
 <h1>Welcome bro!</h1>
 <p>Click to <%= link_to "Sign Up", "#", class: "btn btn-primary btn-lg" %> dogg</p>
 </div>
+
+# DAY 11 ############################################
+# Change colors with bootstrap
+
+# to change background color
+# open file:
+# *>>app>>assets>>stylesheets>>bootstrap_and_customization.css.scss
+$body-bg: brown;         # add this (or "$body-bg: #34495e;")
+@import 'bootstrap';
+# can get colors other than standart from www.flatuicolors.com
+
+# Customize navigation bar
+# Get attributes from here: http://getbootstrap.com/customize/#navbar 
+# open file:
+# *>>app>>assets>>stylesheets>>bootstrap_and_customization.css.scss
+$body-bg: #1abc9c;
+$navbar-default-bg: #16a085;            # navbar bg color
+$navbar-default-link-color: white;      # navbar text color
+$jumbotron-bg: #bdc3c7;					# jumbotron bg color
+$btn-primary-bg: #16a085;               # button color
+@import 'bootstrap';
+
+# DAY 12 ############################################
+# Design improvements
 
 
 
