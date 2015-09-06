@@ -171,7 +171,7 @@ $ bundle install
 <p>Click to <%= link_to "Sign Up", "#", class: "btn btn-primary btn-lg" %> dogg</p>
 </div>
 
-# DAY 11 ############################################
+# DAY 11-12 ############################################
 # Change colors with bootstrap
 
 # to change background color
@@ -187,13 +187,62 @@ $body-bg: brown;         # add this (or "$body-bg: #34495e;")
 # *>>app>>assets>>stylesheets>>bootstrap_and_customization.css.scss
 $body-bg: #1abc9c;
 $navbar-default-bg: #16a085;            # navbar bg color
-$navbar-default-link-color: white;      # navbar text color
 $jumbotron-bg: #bdc3c7;					# jumbotron bg color
 $btn-primary-bg: #16a085;               # button color
+$font-family-sans-serif:		'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$navbar-height:					45px;
+$navbar-default-brand-color:	white;  # navbar, upper left
+$navbar-default-link-color:		white;  # navbar other text
 @import 'bootstrap';
+.center {text-align: center;}           # create new center class and center everything inside 
+.navbar-brand {font-weight: bold;}      # navbar brand is bold
 
-# DAY 12 ############################################
-# Design improvements
+# Make navbar more centered and resizable depending on screen it's viewed
+# Open and change top 2 rows: *>>app>>views>>layouts>>_header.html.erb
+<nav class="navbar navbar-static-top navbar-default" role="navigation">
+  <div class="container">
+...
+# Then add this new .center class to jumbotron to make it centered
+# Open *>>app>>views>>pages>>home.html.erb
+<div class="jumbotron center">   # Add "center" class inside quotes
+...
+
+# Make "Pinteresting" (brand in navbar) a link
+# Open *>>app>>views>>layouts>>_header.html.erb
+...
+<div class="navbar-header">
+	<button ...</button>
+	<%= link_to "Pinterestng", root_path, class: "navbar-brand" %>
+</div>
+
+# DAY 13 ###########################################
+Setting up Heroku
+
+>>Terminal
+$heroku login 
+Email: (enter your email) 
+Password (enter your password)
+
+# Add Heroku keys
+# *>>Terminal
+$ heroku keys:add
+$ heroku create #creates a new URL for your app 
+
+# Add gems to gemfile
+# *>>Gemfile
+group :development, :test do
+     gem 'sqlite3'
+end
+group :production do
+     gem 'pg'
+     gem 'rails_12factor'
+end
+
+# *>>Terminal
+bundle install --without production
+
+
+
 
 
 
