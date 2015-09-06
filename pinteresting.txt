@@ -230,13 +230,18 @@ $ heroku create #creates a new URL for your app
 
 # Add gems to gemfile
 # *>>Gemfile
-group :development, :test do
+...
+gem 'sqlite3'   # Remove this
+...
+group :development, :test do    # Add this group
      gem 'sqlite3'
 end
-group :production do
+group :production do            # Add this group
      gem 'pg'
      gem 'rails_12factor'
 end
+...
+
 
 # *>>Terminal
 bundle install --without production
