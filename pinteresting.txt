@@ -1,0 +1,354 @@
+new rails app
+>Terminal
+$ rails new pinteresting
+$ cd pinteresting
+
+start server while pwd is the folder
+>Terminal
+$ rails server
+
+start git in our working folder
+>Terminal
+$ git init
+$ git status # which items are being tracked
+
+To ignore a file, add its name to /.gitignore file 
+# Ignore all logfiles and tempfiles.
+/log/*.log
+/tmp
+.DS_Store  # added
+
+Getting back deleted file
+>Terminal
+$ git add .
+$ git status     # shows the changes
+$ git checkout -f
+
+create new repository on GitHub
+http://github.com/repositories/new
+
+GitHub Dance
+$ git add .
+$ git commit -am "Changed the Readme.md"
+$ git push
+
+#############################################
+
+# Create homepage: "localhost:3000/pages/home"
+$ rails generate controller pages home
+
+# Make homepage default
+# Open *>>config>>routes.rb
+get 'pages/home'	# delete
+root "pages#home"	# add
+
+# DAY 7 ############################################
+# Creating about page
+
+# Add 3 things:
+# 1- Controller
+# 2- View
+# 3- Add a route
+
+# Open file from *>>app>>controllers>>pages_controller.rb
+class PagesController < ApplicationController
+	def home
+	end
+	def about  # add this, we want an about page
+	end        # def ends here
+end
+
+# Create file in *>>app>>views>>pages>>about.html.erb
+<hi>About us</h1>
+<p>We are the champions, my friend</p>
+
+# Add a route  *>>config>>routes.rb
+Rails.application.routes.draw do
+	root "pages#home"
+	get "about" => "pages#about"    # add this line
+end
+
+# DAY 7-8 ############################################
+# Navigation Links
+
+# Creating navigation links
+# Add link to about page from home page
+# "about_path" (below) links to about page because we had added it to "routes.rb"
+# Open home page in *>>app>>views>>pages>>home.html.erb
+<%= link_to "About", about_path %>  # add this
+<h1>Welcome bro!</h1>
+<p>Sign up here dogg  <%= link_to "here", "#" %></p>
+
+# Add navigation links to layout (website theme)
+# Delete theme links from "home.html.erb" and "about.html.erb"
+# Open layout  *>>app>>views>>layouts>>application.html.erb
+# add links right after the body tag
+...
+</head>
+<body>
+	<%= link_to "Home", root_path %>          # add this
+	<%= link_to "About Us", about_path %>     # add this
+	<%= yield %>
+</body>
+...
+
+# DAY 9 ############################################
+# Add Bootstrap
+
+# Open gemfile  *>>Gemfile
+...
+gem 'bootstrap-sass'    # add this line, bootstrap gem
+...
+
+# Open the terminal, cd to our folder
+>Terminal
+$ bundle install
+
+# Create a new file and import bootstrap:
+# *>>app>>assets>>stylesheets>>bootstrap_and_customization.css.scss
+@import 'bootstrap';    # add this line for import
+
+# Shutdown and restart server for changes to take effect
+
+# DAY 10 ############################################
+# Add Bootstrap Elements to Pages
+
+# Add container from bootstrap, centers the contents
+# *>>http://getbootstrap.com/css/#overview-container
+# Copy it to:
+# *>>app>>views>>layouts>>application.html.erb
+...
+<body>
+	<%= link_to "Home", root_path %>
+	<%= link_to "About Us", about_path %>
+	<div class="container">   # add container here
+		<%= yield %>          # put yield in it
+	</div>                    # end it here
+</body>
+...
+
+# Add navigation tab from bootstrap, copy contents from:
+# *>>http://getbootstrap.com/components/#navbar
+# Create header partial file, which cannot be used on its own
+# Partial files start with underscore "_"
+# *>>app>>views>>layouts>>_header.html.erb
+# Paste the content from bootstrap here
+# Open *>>app>>views>>layouts>>application.html.erb
+# Link it to tab file (_header.html.erb):
+...
+<body>
+	<%= link_to "Home", root_path %>       # DELETE
+	<%= link_to "About Us", about_path %>  # DELETE
+	<%= render 'layouts/header' %>         # Add link to "_header" here
+	<div class="container">
+		<%= yield %>
+	</div>
+</body>
+...
+# Change "_header.html.erb" as needed
+
+# Add bootstrap javascript
+# Open *>>app>>assets>>javascript>>application.js
+...
+//= require jquery_ujs
+//= require bootstrap    # add this exactly here, sequence matters!
+//= require turbolinks
+...
+
+# Make it mobile friendly
+# Open *>>app>>views>>layouts>>application.html.erb
+...
+  	<%= csrf_meta_tags %>
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0"> #add
+</head>
+...
+
+# Open home page *>>app>>views>>pages>>home.html.erb
+# add "jumbotron" from: http://getbootstrap.com/components/#jumbotron
+# add buttons from: http://getbootstrap.com/css/#buttons
+<div class="jumbotron">
+<h1>Welcome bro!</h1>
+<p>Click to <%= link_to "Sign Up", "#", class: "btn btn-primary btn-lg" %> dogg</p>
+</div>
+
+# DAY 11-12 ############################################
+# Change colors with bootstrap
+
+# to change background color
+# open file:
+# *>>app>>assets>>stylesheets>>bootstrap_and_customization.css.scss
+$body-bg: brown;         # add this (or "$body-bg: #34495e;")
+@import 'bootstrap';
+# can get colors other than standart from www.flatuicolors.com
+
+# Customize navigation bar
+# Get attributes from here: http://getbootstrap.com/customize/#navbar 
+# open file:
+# *>>app>>assets>>stylesheets>>bootstrap_and_customization.css.scss
+$body-bg: #1abc9c;
+$navbar-default-bg: #16a085;            # navbar bg color
+$jumbotron-bg: #bdc3c7;					# jumbotron bg color
+$btn-primary-bg: #16a085;               # button color
+$font-family-sans-serif:		'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$navbar-height:					45px;
+$navbar-default-brand-color:	white;  # navbar, upper left
+$navbar-default-link-color:		white;  # navbar other text
+@import 'bootstrap';
+.center {text-align: center;}           # create new center class and center everything inside 
+.navbar-brand {font-weight: bold;}      # navbar brand is bold
+
+# Make navbar more centered and resizable depending on screen it's viewed
+# Open and change top 2 rows: *>>app>>views>>layouts>>_header.html.erb
+<nav class="navbar navbar-static-top navbar-default" role="navigation">
+  <div class="container">
+...
+# Then add this new .center class to jumbotron to make it centered
+# Open *>>app>>views>>pages>>home.html.erb
+<div class="jumbotron center">   # Add "center" class inside quotes
+...
+
+# Make "Pinteresting" (brand in navbar) a link
+# Open *>>app>>views>>layouts>>_header.html.erb
+...
+<div class="navbar-header">
+	<button ...</button>
+	<%= link_to "Pinterestng", root_path, class: "navbar-brand" %>
+</div>
+
+# DAY 13 ###########################################
+Setting up Heroku
+
+>>Terminal
+$heroku login 
+Email: (enter your email) 
+Password (enter your password)
+
+# Add Heroku keys
+# *>>Terminal
+$ heroku keys:add
+$ heroku create #creates a new URL for your app 
+
+# Add gems to gemfile
+# *>>Gemfile
+...
+gem 'sqlite3'   # Remove this
+...
+group :development, :test do    # Add this group
+     gem 'sqlite3'
+end
+group :production do            # Add this group
+     gem 'pg'
+     gem 'rails_12factor'
+end
+...
+
+# *>>Terminal
+bundle install --without production
+
+
+
+
+
+
+# Add and push to git 
+# *>>Terminal 
+$ git add . 
+$ git commit -am "message" 
+$ git push 
+
+# Push to Heroku 
+# *>>Termial 
+$ git push heroku master 
+$ heroku open                # open our page on Heroku 
+$ heroku rename omr515       # rename subdomain 
+
+# Add custom domain to Heroku 
+# *>>Terminal 
+$ heroku domains             # Shows my domains on Heroku 
+$ heroku domains:add www.kuribi.com 
+
+# DAY 14 ############################################ 
+# Installing "Devise" gem (adding users) 
+
+# Open "Gemfile" 
+# *>>Gemfile 
+gem 'devise', '~> 3.1.0.rc2'    # Add this line 
+# 2nd part means version 3.1.0.rc2 or higher (but not 4.0.0) 
+# *>>Terminal 
+$ bundle install 
+
+# Follow steps from https://github.com/plataformatec/devise 
+# in the exact order ("Getting Started") 
+
+# *>>Terminal 
+$ rails generate devise:install  
+# This sets up app to work with devise 
+
+# Step 1 - Add default URLs 
+# Add following line to *>>config>>environments>>development.rb 
+config.action_mailer.default_url_options = { :host => 'localhost:3000' } 
+# Add following line to *>>config>>environments>>production.rb 
+  config.action_mailer.default_url_options = { :host => 'http://www.kuribi.com/' } 
+
+# Step 2 - Add "routes#home" 
+# Open *>>config>>routes.rb 
+root "pages#home"   # Add this line (it was added before) 
+
+# Step 3 - Flash messages 
+# Open *>>app>>views>>layouts>>application.html.erb 
+# Add following line for flash messages 
+... 
+	<div class="container"> 
+		<%  flash.each do |name, msg| %>   # Added 
+			<%= content_tag(:div, msg, class: "alert alert -#{name}") %>    # Added 
+		<% end %>                          # Added 
+		<%= yield %> 
+	</div> 
+... 
+
+# Step 4 
+# Open *>>config>>application.rb 
+... 
+module Pinteresting 
+  class Application < Rails::Application 
+  	... 
+    # Required for Heroku                            # Added 
+    config.assets.initialize_on_precompile = false   # Added 
+  end 
+end 
+
+# Step 5 - Install Devise views 
+# Open *>>Terminal 
+$ rails g devise:views 
+
+# DAY 15 ############################################### 
+# Generating users with "Devise" 
+
+# Create our users for us (user model) 
+# Open *>>Terminal 
+$ rails generate devise user 
+# NOTE: destroy is opposite of generate 
+# NOTE: if you mess up, use "rails destroy devise user" 
+# Now db and user model is added to our file 
+# Model interacts with db 
+
+# Run migration 
+# Open *>>Terminal 
+$ rake db:migrate 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
