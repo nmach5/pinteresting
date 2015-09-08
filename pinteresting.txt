@@ -320,7 +320,7 @@ end
 
 # Step 5 - Install Devise views 
 # Open *>>Terminal 
-$ rails g devise:views 
+$ rails g devise:views
 
 # DAY 15 ############################################### 
 # Generating users with "Devise" 
