@@ -250,6 +250,7 @@ bundle install --without production
 
 
 
+
 # Add and push to git 
 # *>>Terminal 
 $ git add . 
@@ -335,7 +336,6 @@ $ rails generate devise user
 # Run migration 
 # Open *>>Terminal 
 $ rake db:migrate 
-
 
 
 
