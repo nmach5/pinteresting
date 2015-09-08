@@ -32,6 +32,10 @@ $ git add .
 $ git commit -am "Changed the Readme.md"
 $ git push
 
+#(for "git push" to work, first have to do following in terminal:
+$ git remote add origin git@github.com:<username>/demo_app.git
+$ git push origin master)
+
 #############################################
 
 # Create homepage: "localhost:3000/pages/home"
@@ -245,12 +249,6 @@ end
 # *>>Terminal
 bundle install --without production
 
-
-
-
-
-
-
 # Add and push to git 
 # *>>Terminal 
 $ git add . 
@@ -283,7 +281,7 @@ $ bundle install
 
 # *>>Terminal 
 $ rails generate devise:install  
-# This sets up app to work with devise 
+# This sets up app to work with devise
 
 # Step 1 - Add default URLs 
 # Add following line to *>>config>>environments>>development.rb 
@@ -327,15 +325,28 @@ $ rails g devise:views
 
 # Create our users for us (user model) 
 # Open *>>Terminal 
-$ rails generate devise user 
+$ rails generate devise user
+# (If needed: Navigate to your db/migrate/ folder 
+# and add .rb to the migration that you've generated)
 # NOTE: destroy is opposite of generate 
 # NOTE: if you mess up, use "rails destroy devise user" 
 # Now db and user model is added to our file 
-# Model interacts with db 
+# Model interacts with db
 
 # Run migration 
 # Open *>>Terminal 
 $ rake db:migrate 
+# restart server each time you run "rake db:migrate"
+# or each install a gemfile
+
+
+
+
+
+
+
+
+
 
 
 
