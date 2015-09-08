@@ -8,11 +8,8 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
-<<<<<<< HEAD
 gem 'devise', '~> 3.1.0.rc2'
-=======
 
->>>>>>> a99dbbd0901ac95d28658771c6272745f7edbbbd
 
 # get bootstrap
 gem 'bootstrap-sass'

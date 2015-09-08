@@ -38,12 +38,8 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
-<<<<<<< HEAD
 
   # Require for Heroku
   config.action_mailer.default_url_options = { :host => 'localhost:3000' } 
-  config.action_mailer.default_url_options = { :host => 'http://www.kuribi.com/' } 
-
-=======
->>>>>>> a99dbbd0901ac95d28658771c6272745f7edbbbd
+  
 end
