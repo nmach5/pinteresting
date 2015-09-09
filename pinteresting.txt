@@ -299,7 +299,7 @@ root "pages#home"   # Add this line (it was added before)
 ... 
 	<div class="container"> 
 		<%  flash.each do |name, msg| %>   # Added 
-			<%= content_tag(:div, msg, class: "alert alert -#{name}") %>    # Added 
+			<%= content_tag(:div, msg, class: "alert alert-info") %>    # Added 
 		<% end %>                          # Added 
 		<%= yield %> 
 	</div> 
@@ -339,13 +339,45 @@ $ rake db:migrate
 # restart server each time you run "rake db:migrate"
 # or each install a gemfile
 
+# List all paths available to my application
+# *>>Terminal
+$ rake routes
 
+# Sign up path:
+# Open: *>>app>>views>>pages>>home.html.erb
+# Change "#" with "new_user_registration_path" for sign up
+...	
+<p>Click to <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-primary btn-lg" %> dogg</p>
+...
+# Sign up page is already created by devise
+# 
+...
+# Change "#" with "new_user_session_path" for log in
+<p>or please <%= link_to "Log In", new_user_session_path, class: "btn btn-default btn-lg"  %> here</p>
+...
 
+# If user is signed in, don't show "log in" and "sign up" buttons
+# Open: *>>app>>views>>pages>>home.html.erb
+<div class="jumbotron center">
+	<h1>Welcome bro!</h1>
+	<% if user_signed_in? %>                   # Add if here, "user_signed_in" returns T/F in devise
+		<p>Congratulations on signing up!</p>  # if logged in show this
+	<% else %>                                 # if not logged in, run this block
+		<p>Click to <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-primary btn-lg" %> dogg</p>
+		<p>or just <%= link_to "Log In", new_user_session_path, class: "btn btn-default btn-lg"  %> here</p>
+	<% end %>                                  # dont forget to end if block
+</div>
 
-
-
-
-
+# To the navbar: Add Log out button if user is signed in
+# Open: *>>app>>views>>layouts>>_header.html.erb
+...
+	<li><%= link_to "About", about_path %></li>
+	<% if user_signed_in? %>
+		<li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
+	<% else %>
+		<li><%= link_to "Log in", new_user_session_path %></li>
+	<% end %>
+</ul>
 
 
 
