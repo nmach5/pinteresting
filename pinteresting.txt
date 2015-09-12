@@ -223,7 +223,7 @@ $navbar-default-link-color:		white;  # navbar other text
 Setting up Heroku
 
 >>Terminal
-$heroku login 
+$ heroku login 
 Email: (enter your email) 
 Password (enter your password)
 
@@ -257,7 +257,8 @@ $ git push
 
 # Push to Heroku 
 # *>>Termial 
-$ git push heroku master 
+$ git push heroku master
+# if doesn't work, try: $ heroku git:remote -a omr515) 
 $ heroku open                # open our page on Heroku 
 $ heroku rename omr515       # rename subdomain 
 
@@ -320,7 +321,7 @@ end
 # Open *>>Terminal 
 $ rails g devise:views
 
-# DAY 15 ############################################### 
+# DAY 15-16 ############################################### 
 # Generating users with "Devise" 
 
 # Create our users for us (user model) 
@@ -378,6 +379,66 @@ $ rake routes
 		<li><%= link_to "Log in", new_user_session_path %></li>
 	<% end %>
 </ul>
+
+# DAY 17 ############################################### 
+
+# Run migration on Heroku
+# Because Databases on Local PC and Heroku are different 
+# Open *>>Terminal 
+$ heroku run rake db:migrate 
+
+# DAY 18 ############################################### 
+
+# Add Account Settings link:
+# *>>app>>views>>layouts>>_header.html.erb
+...
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "Home",  root_path %></li>
+        <li><%= link_to "About", about_path %></li>
+        <li><%= link_to "Account Settings", edit_user_registration_path %></li>  #ADD THIS
+...
+
+# Change Devise pages:
+# Edit: *>>app>>views>>devise>>passwords>>new.html.erb
+# Edit: *>>app>>views>>devise>>passwords>>edit.html.erb
+
+# Edit: *>>app>>views>>devise>>registrations>>new.html.erb
+# Edit: *>>app>>views>>devise>>registrations>>edit.html.erb
+
+# Edit: *>>app>>views>>devise>>sessions>>new.html.erb
+
+# change every page like this:
+<div class="panel panel-default">	
+
+	<div class="panel-heading">
+		<h2>Sign up</h2>
+	</div>
+
+	<div class="panel-body">
+		<%= ... %>
+			<%= ... %>
+		  	<div class="form-group">
+		  		<%= ... %>
+		  		<%= ..., class: "form-control" %>
+		  	</div>
+		  	<div class="form-group">
+		  		<%= ... %>
+		  		<%= ..., class: "form-control" %>
+		  	</div>
+		  	<div class="form-group">
+		  		<%= ..., class: "btn btn-primary btn-lg" %>
+		  	</div>
+		<% end %>
+
+		<div class="panel-footer">
+			<%= ... %>
+		</div>
+	</div>
+
+</div>
+
+
+
 
 
 

@@ -6,10 +6,11 @@ $navbar-default-brand-color:	white;
 $navbar-default-link-color:		white;
 $navbar-default-bg:				#16a085;
 $jumbotron-bg: 					white;
+
 $btn-primary-bg:				#16a085;
+$btn-primary-color:				white;
 $btn-default-bg:				white;
 $btn-default-color:				#16a085;
-
 
 @import 'bootstrap';
 
@@ -22,6 +23,4 @@ $btn-default-color:				#16a085;
      font-weight: bold;
      font-size:    1.35em;
 }
-
-
 
