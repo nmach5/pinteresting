@@ -1,8 +1,14 @@
 
-<div>
-	<img style="width:140%; margin-left: -20% "
-		<%= image_tag("kurabiye-1.jpg", :alt => "kurabiye-1") %>
+<div 
+	style="
+		background-image: url('/assets/kurabiye-1.jpg');
+		height: 250px;
+		background-repeat: no-repeat;
+		background-size: cover;">
+
 </div>
+
+
 <div class="jumbotron center" style="margin-top: 3.5rem;">
 	<h1>Welcome bro!</h1>
 	<% if user_signed_in? %>
@@ -11,6 +17,9 @@
 		<p>Click to <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-primary btn-lg" %> dogg</p>
 		<p>or just <%= link_to "Log In", new_user_session_path, class: "btn btn-default btn-lg"  %> here</p>
 	<% end %>
+
+	<p>Design your own custom cookies</p>
+
 </div>
 
 
