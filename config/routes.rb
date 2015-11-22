@@ -3,6 +3,10 @@ Rails.application.routes.draw do
   root "pages#home"
   get "about" => "pages#about"   # creates about_path
   get "cv" => "pages#cv"
+  get "cv1" => "pages#cv1"
+  get "cv2" => "pages#cv2"
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

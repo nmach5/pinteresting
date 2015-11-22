@@ -1,5 +1,7 @@
 
-<% unless request.path == cv_path %>
+<% unless request.path == cv_path || 
+          request.path == cv1_path || 
+          request.path == cv2_path %>
 
   <nav class="navbar navbar-static-top navbar-default" role="navigation">
     <div class="container">
