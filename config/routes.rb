@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get "cv" => "pages#cv"
   get "cv1" => "pages#cv1"
   get "cv2" => "pages#cv2"
-
+  get "esracv" => "pages#esracv"
 
 
   # The priority is based upon order of creation: first created -> highest priority.

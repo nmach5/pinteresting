@@ -48,21 +48,21 @@ p {
 
 .mainDetails {
 	padding: 25px 35px;
-	border-bottom: 3px solid #e67e22;
+	border-bottom: 3px solid purple;
 	background: #d2d7df;
 }
 
 #name h1 {
-	font-size: 2.5em;
+	font-size: 2.25em;
 	font-weight: 700;
-	font-family: 'Rokkitt', Helvetica, Arial, sans-serif;
+	font-family: 'Open Sans', Helvetica, Arial, sans-serif;
 	margin-bottom: -6px;
 }
 
 #name h2 {
-	font-size: 2em;
+	font-size: 1.8em;
 	margin-left: 2px;
-	font-family: 'Rokkitt', Helvetica, Arial, sans-serif;
+	font-family: 'Open Sans', Helvetica, Arial, sans-serif;
 }
 
 #mainArea {
@@ -70,7 +70,7 @@ p {
 }
 
 #headshot {
-	width: 12.5%;
+	width: 16.5%;
 	float: left;
 	margin-right: 30px;
 }
@@ -120,7 +120,7 @@ p {
 
 /* #cf8a05 - orange*/
 section {
-	border-top: 2px solid #e67e22;
+	border-top: 2px solid purple;
 	padding: 20px 0 0;
 }
 
@@ -130,10 +130,10 @@ section {
 }
 
 .sectionTitle h1 {
-	font-family: 'Rokkitt', Helvetica, Arial, sans-serif;
+	font-family: 'Open Sans', Helvetica, Arial, sans-serif;
 	font-style: italic;
-	font-size: 1.5em;
-	color: #d35400;
+	font-size: 1.35em;
+	color: purple;
 }
 
 
@@ -157,8 +157,8 @@ section:last-child {
 
 
 .sectionContent h2 {
-	font-family: 'Rokkitt', Helvetica, Arial, sans-serif;
-	font-size: 1.5em;
+	font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+	font-size: 1.35em;
 	margin-bottom: -2px;
 }
 

@@ -9,4 +9,9 @@ class PagesController < ApplicationController
   end
   def cv2
   end
+  def esracv
+  end
+  
+  
+
 end
